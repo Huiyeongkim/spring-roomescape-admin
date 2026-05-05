@@ -8,7 +8,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import roomescape.domain.ReservationTime;
 import roomescape.dto.ReservationResDto;
 import roomescape.repository.ReservationDao;
-import roomescape.repository.ReservationTimeDao;
+import roomescape.repository.ReservationDaoImpl;
+import roomescape.repository.ReservationTimeDaoImpl;
 import roomescape.service.command.ReservationCommand;
 
 import javax.sql.DataSource;
@@ -19,7 +20,7 @@ import java.util.List;
 class ReservationServiceTest {
 
     private ReservationService reservationService;
-    private ReservationTimeDao reservationTimeDao;
+    private ReservationTimeDaoImpl reservationTimeDao;
     private JdbcTemplate jdbcTemplate;
 
     @BeforeEach
@@ -54,8 +55,8 @@ class ReservationServiceTest {
                         ");"
         );
 
-        ReservationDao reservationDao = new ReservationDao(dataSource);
-        reservationTimeDao = new ReservationTimeDao(dataSource);
+        ReservationDao reservationDao = new ReservationDaoImpl(dataSource);
+        reservationTimeDao = new ReservationTimeDaoImpl(dataSource);
         reservationService = new ReservationService(reservationDao, reservationTimeDao);
     }
 

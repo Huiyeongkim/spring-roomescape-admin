@@ -7,7 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import roomescape.dto.ReservationTimeResDto;
 import roomescape.repository.ReservationDao;
+import roomescape.repository.ReservationDaoImpl;
 import roomescape.repository.ReservationTimeDao;
+import roomescape.repository.ReservationTimeDaoImpl;
 import roomescape.service.command.ReservationCommand;
 import roomescape.service.command.ReservationTimeCommand;
 
@@ -54,8 +56,8 @@ class ReservationTimeServiceTest {
                         ");"
         );
 
-        ReservationDao reservationDao = new ReservationDao(dataSource);
-        ReservationTimeDao reservationTimeDao = new ReservationTimeDao(dataSource);
+        ReservationDao reservationDao = new ReservationDaoImpl(dataSource);
+        ReservationTimeDao reservationTimeDao = new ReservationTimeDaoImpl(dataSource);
         reservationTimeService = new ReservationTimeService(reservationTimeDao, reservationDao);
         reservationService = new ReservationService(reservationDao, reservationTimeDao);
     }

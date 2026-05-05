@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import roomescape.domain.Reservation;
 import roomescape.domain.ReservationTime;
-import roomescape.dto.ReservationCreateReqDto;
 import roomescape.dto.ReservationResDto;
 import roomescape.repository.ReservationDao;
 import roomescape.repository.ReservationTimeDao;
