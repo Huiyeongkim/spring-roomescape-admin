@@ -1,7 +1,6 @@
 package roomescape.domain;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class Reservation {
 
@@ -18,18 +17,26 @@ public class Reservation {
     }
 
     public static Reservation create(String name, LocalDate date, ReservationTime time) {
-        validate(name);
+        validateName(name);
+        validateTime(time);
         return new Reservation(null, name, date, time);
     }
 
     public static Reservation withId(Long id, String name, LocalDate date, ReservationTime time) {
-        validate(name);
+        validateName(name);
+        validateTime(time);
         return new Reservation(id, name, date, time);
     }
 
-    private static void validate(String name) {
+    private static void validateName(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("예약자명이 없습니다.");
+        }
+    }
+
+    private static void validateTime(ReservationTime time) {
+        if (time == null) {
+            throw new IllegalArgumentException("예약시간이 없습니다.");
         }
     }
 
